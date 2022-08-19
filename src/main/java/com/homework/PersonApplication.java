@@ -1,4 +1,4 @@
-package com.homework.persondata;
+package com.homework;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PersonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PersonApplication.class, args);
+		SpringApplication.run(PersonApplication.class);
 	}
-
 }
