@@ -1,11 +1,11 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: validate
   datasource:
     password: root
     username: root
-    url: jdbc:mysql://localhost:3306/persondata
+    url: jdbc:mysql://localhost:3306/person
     driver-class-name: com.mysql.cj.jdbc.Driver
   liquibase:
     change-log: liquibase-changeLog.xml
