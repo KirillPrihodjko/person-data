@@ -18,16 +18,10 @@ public class PersonService {
         return convert(entity);
     }
 
-    public PersonDto findPersonById(Long id) {
-        return personRepository.findById(id).
+    public PersonDto findPersonByIdAndDateOfBirth(Long id, String dateOfBirth) {
+        return personRepository.findPersonByIdAndDateOfBirth(id, dateOfBirth).
                 map(this::convert).
-                orElseThrow(() -> new IllegalArgumentException("Person with id '{}' is not found"));
-    }
-
-    public PersonDto findPersonByDateOfBirth(String dateOfBirth) {
-        return personRepository.findPersonEntityByDateOfBirth(dateOfBirth).
-                map(this::convert).
-                orElseThrow(() -> new IllegalArgumentException("Person with date of birth '{}' is not found"));
+                orElseThrow(() -> new IllegalArgumentException("Person with id " + id + " is not found"));
     }
 
     private PersonEntity convert(PersonDto dto) {

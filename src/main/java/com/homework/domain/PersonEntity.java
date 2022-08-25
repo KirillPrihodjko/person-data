@@ -26,7 +26,7 @@ public class PersonEntity {
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "gender")
-    private Long gender;
+    private String gender;
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 }

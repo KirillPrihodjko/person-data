@@ -12,6 +12,6 @@ public class PersonDto {
     private Long id;
     private String firstName;
     private String lastName;
-    private Long gender;
+    private String gender;
     private String dateOfBirth;
 }
