@@ -1,7 +1,6 @@
 package com.homework.service;
 
 import com.homework.domain.PersonEntity;
-import com.homework.dto.FindByIdAndDateOfBirthPersonResponse;
 import com.homework.dto.PersonDto;
 import com.homework.repository.PersonRepository;
 import org.junit.jupiter.api.Test;
@@ -25,30 +24,30 @@ class PersonServiceTest {
     private PersonService service;
 
     @Test
-    void shouldFindPersonByIdAndDateOfBirth() {
-        var returnResult = entities();
+    void shouldFindAllPersons() {
+        var returnResult = entitiesSecond();
         when(repository.findAll()).thenReturn(returnResult);
 
-        long id = 1;
-        String dateOfBirth = "04/01/2000";
-
-        var result = service.findPersonByIdAndDateOfBirth(id, dateOfBirth);
+        var result = service.findAll();
 
         var expectedResult = response();
 
         assertEquals(expectedResult, result);
     }
 
-    private List<PersonEntity> entities() {
+    private List<PersonEntity> entitiesSecond() {
         var returnEntity = new PersonEntity();
         returnEntity.setId(1L);
-        returnEntity.setDateOfBirth("04/01/2000");
+        returnEntity.setFirstName("Test firstname");
+        returnEntity.setLastName("Test lastname");
+        returnEntity.setGender("Test gender");
+        returnEntity.setDateOfBirth("Test dateOfBirth");
         return List.of(returnEntity);
     }
 
-    private FindByIdAndDateOfBirthPersonResponse response() {
-        var dto = new PersonDto(1L, "Test FirstName",
-                "Test LastName", "Test Gender", "Test DateOfBirth");
-        return new FindByIdAndDateOfBirthPersonResponse((List.of(dto)));
+    private List<PersonDto> response() {
+        var dto = new PersonDto(1L, "Test firstname",
+                "Test lastname", "Test gender", "Test dateOfBirth");
+        return List.of(dto);
     }
 }

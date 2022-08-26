@@ -6,27 +6,25 @@ import com.homework.repository.PersonRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class PersonService {
 
     private final PersonRepository personRepository;
 
-    public PersonDto save(PersonDto personDto) {
-        var entity = convert(personDto);
-        personRepository.save(entity);
-        return convert(entity);
+    public List<PersonDto> findAll() {
+        return personRepository.findAll().stream()
+                .map(this::convert)
+                .collect(Collectors.toList());
     }
 
-    public PersonDto findPersonByIdAndDateOfBirth(Long id, String dateOfBirth) {
-        return personRepository.findPersonByIdAndDateOfBirth(id, dateOfBirth).
-                map(this::convert).
-                orElseThrow(() -> new IllegalArgumentException("Person with id " + id + " is not found"));
-    }
-
-    private PersonEntity convert(PersonDto dto) {
-        return new PersonEntity(dto.getId(), dto.getFirstName(), dto.getLastName(),
-                dto.getGender(), dto.getDateOfBirth());
+    public List<PersonDto> findAllPersonByIdAndDateOfBirth(Long id, String dateOfBirth) {
+        return personRepository.findAllByIdAndDateOfBirth(id, dateOfBirth).stream()
+                .map(this::convert)
+                .collect(Collectors.toList());
     }
 
     private PersonDto convert(PersonEntity entity) {
