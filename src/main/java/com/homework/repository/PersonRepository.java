@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface PersonRepository extends JpaRepository<PersonEntity, Long> {
 
-    List<PersonEntity> findAllByIdAndDateOfBirth(Long id, String dateOfBirth);
+    List<PersonEntity> findAllByIdAndDateOfBirth(Integer id, String dateOfBirth);
 }

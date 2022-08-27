@@ -8,16 +8,14 @@
 <table>
     <thead>
     <tr>
-        <th> Id </th>
-        <th> First Name </th>
-        <th> Last Name </th>
-        <th> Gender </th>
-        <th> Date Of Birth </th>
+        <th> First Name</th>
+        <th> Last Name</th>
+        <th> Gender</th>
+        <th> Date Of Birth</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="person : ${persons}">
-        <td><span th:text="${person.id"> Id </span></td>
         <td><span th:text="${person.firstName"> First Name </span></td>
         <td><span th:text="${person.lastName"> Last Name </span></td>
         <td><span th:text="${person.gender"> Gender </span></td>
