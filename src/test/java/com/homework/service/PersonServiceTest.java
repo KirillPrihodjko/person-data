@@ -37,7 +37,7 @@ class PersonServiceTest {
 
     private List<PersonEntity> entitiesSecond() {
         var returnEntity = new PersonEntity();
-        returnEntity.setId(1L);
+        returnEntity.setId(1);
         returnEntity.setFirstName("Test firstname");
         returnEntity.setLastName("Test lastname");
         returnEntity.setGender("Test gender");
@@ -46,7 +46,7 @@ class PersonServiceTest {
     }
 
     private List<PersonDto> response() {
-        var dto = new PersonDto(1L, "Test firstname",
+        var dto = new PersonDto(1, "Test firstname",
                 "Test lastname", "Test gender", "Test dateOfBirth");
         return List.of(dto);
     }

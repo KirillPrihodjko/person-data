@@ -21,7 +21,7 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
-    public List<PersonDto> findAllPersonByIdAndDateOfBirth(Long id, String dateOfBirth) {
+    public List<PersonDto> findAllPersonByIdAndDateOfBirth(Integer id, String dateOfBirth) {
         return personRepository.findAllByIdAndDateOfBirth(id, dateOfBirth).stream()
                 .map(this::convert)
                 .collect(Collectors.toList());
