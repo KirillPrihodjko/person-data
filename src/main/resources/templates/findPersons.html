@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="UTF-8">
-    <title>Find Person</title>
+    <title>Persons List</title>
 </head>
 <body>
-<h1>Find Person</h1>
-<form action="#" th:action="@{/findPersons}" th:object="${persons}" method="get">
-    <p>Id: <label>
-        <input type="number" th:field="*{id}"/>
-    </label></p>
-    <p>Date Of Birth: <label>
-        <input type="text" th:field="*{dateOfBirth}"/>
-    </label></p>
-    <p><input type="submit" value="Find"/> <input type="reset" value="Reset"/></p>
-</form>
+<table>
+    <thead>
+    <tr>
+        <th> Id</th>
+        <th> First Name</th>
+        <th> Last Name</th>
+        <th> Gender</th>
+        <th> Date Of Birth</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person:${persons}">
+        <td><span th:text="${person.id}"> Id </span></td>
+        <td><span th:text="${person.firstName}"> First Name </span></td>
+        <td><span th:text="${person.lastName}"> Last Name </span></td>
+        <td><span th:text="${person.gender}"> Gender </span></td>
+        <td><span th:text="${person.dateOfBirth}"> Date Of Birth </span></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
