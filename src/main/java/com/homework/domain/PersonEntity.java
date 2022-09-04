@@ -2,6 +2,7 @@ package com.homework.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 @Table(name = "person")
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode
 public class PersonEntity {
 
     @Id

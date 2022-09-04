@@ -1,8 +1,11 @@
-package com.homework.service;
+package com.homework.service.service;
 
 import com.homework.domain.PersonEntity;
 import com.homework.dto.PersonDto;
 import com.homework.repository.PersonRepository;
+import com.homework.service.PersonService;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,31 +26,28 @@ class PersonServiceTest {
     @InjectMocks
     private PersonService service;
 
-    @Test
-    void shouldFindAllPersons() {
-        var returnResult = entitiesSecond();
-        when(repository.findAll()).thenReturn(returnResult);
+    private static List<PersonDto> expectedResponse;
 
-        var result = service.findAll();
+    private static List<PersonEntity> entities;
 
-        var expectedResult = response();
-
-        assertEquals(expectedResult, result);
-    }
-
-    private List<PersonEntity> entitiesSecond() {
+    @BeforeAll
+    public static void entity() {
+        var dto = new PersonDto(1, "Test firstname",
+                "Test lastname", "Test gender", "Test dateOfBirth");
+        expectedResponse = List.of(dto);
         var returnEntity = new PersonEntity();
         returnEntity.setId(1);
         returnEntity.setFirstName("Test firstname");
         returnEntity.setLastName("Test lastname");
         returnEntity.setGender("Test gender");
         returnEntity.setDateOfBirth("Test dateOfBirth");
-        return List.of(returnEntity);
+        entities = List.of(returnEntity);
     }
 
-    private List<PersonDto> response() {
-        var dto = new PersonDto(1, "Test firstname",
-                "Test lastname", "Test gender", "Test dateOfBirth");
-        return List.of(dto);
+    @Test
+    @DisplayName("Test method findAllPersons")
+    void shouldFindAllPersons() {
+        when(repository.findAll()).thenReturn(entities);
+        assertEquals(expectedResponse, service.findAll());
     }
 }

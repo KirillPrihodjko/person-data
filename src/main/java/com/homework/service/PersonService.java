@@ -4,16 +4,20 @@ import com.homework.domain.PersonEntity;
 import com.homework.dto.PersonDto;
 import com.homework.repository.PersonRepository;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@NoArgsConstructor
 @AllArgsConstructor
 public class PersonService {
 
-    private final PersonRepository personRepository;
+    @Autowired
+    private PersonRepository personRepository;
 
     public List<PersonDto> findAll() {
         return personRepository.findAll().stream()

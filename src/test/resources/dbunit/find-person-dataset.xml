@@ -1,0 +1,8 @@
+<dataset reset_sequences="person_sequence">
+    <person id="2"
+            first_name="test"
+            last_name="test"
+            gender="test"
+            date_of_birth="04/01/2000"
+    />
+</dataset>
